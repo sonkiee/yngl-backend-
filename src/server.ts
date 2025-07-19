@@ -1,7 +1,9 @@
 import app from "./app";
+import { connectDB } from "./config/db";
 
 (async () => {
   try {
+    await connectDB();
     app.listen(300, () => {
       console.log("🚀 Server is running");
     });
