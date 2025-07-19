@@ -8,7 +8,7 @@ export interface AuthRequest extends Request {
   user?: Partial<User>;
 }
 
-export const authenticate = (
+export const authenticate = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
@@ -26,6 +26,7 @@ export const authenticate = (
     }
 
     const decoded = verify(token) as User;
+    // const user = await userService.findById(decoded.id);
 
     req.user = {
       id: decoded.id,
