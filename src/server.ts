@@ -4,7 +4,7 @@ import { connectDB } from "./config/db";
 (async () => {
   try {
     await connectDB();
-    app.listen(300, () => {
+    app.listen(3000, () => {
       console.log("🚀 Server is running");
     });
   } catch (error) {
