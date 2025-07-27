@@ -1,0 +1,37 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Navigator Info</title>
+</head>
+
+<body>
+    <h1>Checking Navigator Info...</h1>
+    <pre id="output">Loading...</pre>
+
+    <script>
+        const fingerprint = {
+            platform: navigator.platform,
+            userAgent: navigator.userAgent,
+            language: navigator.language,
+            cookieEnabled: navigator.cookieEnabled,
+            hardwareConcurrency: navigator.hardwareConcurrency,
+            deviceMemory: navigator.deviceMemory,
+            screenSize: {
+                width: screen.width,
+                height: screen.height
+            }
+        };
+
+        document.getElementById("output").innerText = JSON.stringify(fingerprint, null, 2);
+
+        fetch("/api/fingerprint", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(fingerprint)
+        });
+    </script>
+</body>
+
+</html>
